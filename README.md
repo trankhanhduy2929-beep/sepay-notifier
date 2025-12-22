@@ -1,1 +1,58 @@
-SePay Notifier cho Home AssistantTích hợp thông báo giao dịch ngân hàng từ SePay.vn vào Home Assistant. Tự động cập nhật số dư, số tiền giao dịch và thông báo qua loa (TTS) một cách chuyên nghiệp.1. Giới thiệuComponent này giúp bạn nhận dữ liệu biến động số dư từ SePay qua cơ chế Webhook. Dữ liệu được tách bạch thành các thực thể (entities) riêng lẻ để bạn dễ dàng quản lý và hiển thị trên Dashboard.2. Tính năng nổi bật7 thực thể riêng biệt: Số tiền, Nội dung, STK, Thời gian, Loại giao dịch, Ngân hàng, Số dư.Thông báo TTS (Edge TTS): Tự động đọc số tiền nhận được qua loa (bảo mật: không đọc nội dung).Giao diện cấu hình UI: Thiết lập và thay đổi tùy chọn (Configure) trực tiếp trên giao diện HA mà không cần khởi động lại hoặc cài lại.Tương thích cao: Hỗ trợ mọi ngân hàng mà SePay cung cấp.3. Cấu trúc thư mụcTải các tệp mã nguồn và đặt vào đúng đường dẫn sau:config/custom_components/sepay/Các tệp cần thiết:manifest.json: Thông tin định danh integration.__init__.py: Xử lý logic Webhook và dịch vụ TTS.config_flow.py: Giao diện thiết lập và cấu hình lại (Options).sensor.py: Khai báo các thực thể hiển thị lên giao diện.4. Hướng dẫn cài đặtBước 1: Chép tệp vào Home AssistantSử dụng File Editor, Samba Share hoặc SSH để tạo thư mục sepay và chép 4 tệp trên vào.Bước 2: Khởi động lại Home AssistantVào Settings -> System -> YAML -> Check Configuration. Nếu không có lỗi, hãy nhấn Restart.Bước 3: Thêm Integration vào UIVào Settings -> Devices & Services.Nhấn Add Integration.Tìm kiếm SePay Notifier.Nhập các thông tin:Webhook ID: Đặt một cái tên duy nhất (ví dụ: chuyen_tien_nha_toi).TTS Entity: Chọn thực thể TTS bạn đang dùng (mặc định tts.edge_tts_2).Media Player: Chọn loa muốn phát thông báo.Voice/Rate/Volume: Tùy chỉnh giọng nói theo ý muốn.5. Cấu hình trên Dashboard SePay.vnĐăng nhập vào SePay.vn.Vào mục Cấu hình Webhook (hoặc Tích hợp hệ thống).Tạo Webhook mới với URL có cấu dạng:https://<DOMAIN_CỦA_BẠN>/api/webhook/<WEBHOOK_ID_BẠN_ĐÃ_ĐẶT>Ví dụ: https://myhome.duckdns.org/api/webhook/chuyen_tien_nha_toiChọn phương thức: POST và Content-Type: application/json.6. Danh sách các thực thể (Entities)Sau khi cài đặt thành công, Integration sẽ tạo ra 1 Thiết bị (Device) chứa 7 thực thể:sensor.sepay_amount: Số tiền của giao dịch gần nhất.sensor.sepay_content: Nội dung chuyển khoản.sensor.sepay_account: Số tài khoản nhận tiền.sensor.sepay_time: Thời gian giao dịch (giờ ngân hàng).sensor.sepay_type: Tiền vào / Tiền ra.sensor.sepay_bank: Tên ngân hàng nhận.sensor.sepay_balance: Số dư tài khoản sau giao dịch.7. Cách thay đổi cấu hình (Configure)Bạn không cần xóa cài lại nếu muốn đổi loa hay đổi giọng nói:Vào Settings -> Devices & Services.Tìm thẻ SePay Notifier.Nhấn vào nút CONFIGURE (Cấu hình).Thay đổi thông số và nhấn Submit. Các thay đổi sẽ có hiệu lực ngay lập tức cho lần giao dịch tới.8. Xử lý sự cố (Troubleshooting)Không thấy thực thể: Kiểm tra lại file sensor.py đã có trong thư mục chưa và đã Restart HA chưa.Loa không báo: Đảm bảo thực thể loa (media_player) đang ở trạng thái idle hoặc playing và âm lượng không bị tắt. Kiểm tra Log trong HA để xem có lỗi dịch vụ tts.speak không.Webhook không hoạt động: Kiểm tra URL Webhook xem đã chính xác chưa, và Home Assistant của bạn có đang mở port ra internet (hoặc dùng Nabu Casa/DuckDNS) để SePay có thể gửi dữ liệu về không.Tài liệu hướng dẫn được tạo dựa trên phiên bản v1.6.0 của SePay Custom Component.
+SePay Notifier cho Home Assistant
+Tích hợp thông báo giao dịch ngân hàng từ SePay.vn vào Home Assistant. Tự động cập nhật số dư, số tiền giao dịch và thông báo qua loa (TTS) một cách chuyên nghiệp.
+1. Giới thiệu
+Component này giúp bạn nhận dữ liệu biến động số dư từ SePay qua cơ chế Webhook. Dữ liệu được tách bạch thành các thực thể (entities) riêng lẻ để bạn dễ dàng quản lý và hiển thị trên Dashboard.
+2. Tính năng nổi bật
+7 thực thể riêng biệt: Số tiền, Nội dung, STK, Thời gian, Loại giao dịch, Ngân hàng, Số dư.
+Thông báo TTS (Edge TTS): Tự động đọc số tiền nhận được qua loa (bảo mật: không đọc nội dung).
+Giao diện cấu hình UI: Thiết lập và thay đổi tùy chọn (Configure) trực tiếp trên giao diện HA mà không cần khởi động lại hoặc cài lại.
+Tương thích cao: Hỗ trợ mọi ngân hàng mà SePay cung cấp.
+3. Cấu trúc thư mục
+Tải các tệp mã nguồn và đặt vào đúng đường dẫn sau:
+config/custom_components/sepay/
+Các tệp cần thiết:
+manifest.json: Thông tin định danh integration.
+__init__.py: Xử lý logic Webhook và dịch vụ TTS.
+config_flow.py: Giao diện thiết lập và cấu hình lại (Options).
+sensor.py: Khai báo các thực thể hiển thị lên giao diện.
+4. Hướng dẫn cài đặt
+Bước 1: Chép tệp vào Home Assistant
+Sử dụng File Editor, Samba Share hoặc SSH để tạo thư mục sepay và chép 4 tệp trên vào.
+Bước 2: Khởi động lại Home Assistant
+Vào Settings -> System -> YAML -> Check Configuration. Nếu không có lỗi, hãy nhấn Restart.
+Bước 3: Thêm Integration vào UI
+Vào Settings -> Devices & Services.
+Nhấn Add Integration.
+Tìm kiếm SePay Notifier.
+Nhập các thông tin:
+Webhook ID: Đặt một cái tên duy nhất (ví dụ: chuyen_tien_nha_toi).
+TTS Entity: Chọn thực thể TTS bạn đang dùng (mặc định tts.edge_tts_2).
+Media Player: Chọn loa muốn phát thông báo.
+Voice/Rate/Volume: Tùy chỉnh giọng nói theo ý muốn.
+5. Cấu hình trên Dashboard SePay.vn
+Đăng nhập vào SePay.vn.
+Vào mục Cấu hình Webhook (hoặc Tích hợp hệ thống).
+Tạo Webhook mới với URL có cấu dạng:
+https://<DOMAIN_CỦA_BẠN>/api/webhook/<WEBHOOK_ID_BẠN_ĐÃ_ĐẶT>
+Ví dụ: https://myhome.duckdns.org/api/webhook/chuyen_tien_nha_toi
+Chọn phương thức: POST và Content-Type: application/json.
+6. Danh sách các thực thể (Entities)
+Sau khi cài đặt thành công, Integration sẽ tạo ra 1 Thiết bị (Device) chứa 7 thực thể:
+sensor.sepay_amount: Số tiền của giao dịch gần nhất.
+sensor.sepay_content: Nội dung chuyển khoản.
+sensor.sepay_account: Số tài khoản nhận tiền.
+sensor.sepay_time: Thời gian giao dịch (giờ ngân hàng).
+sensor.sepay_type: Tiền vào / Tiền ra.
+sensor.sepay_bank: Tên ngân hàng nhận.
+sensor.sepay_balance: Số dư tài khoản sau giao dịch.
+7. Cách thay đổi cấu hình (Configure)
+Bạn không cần xóa cài lại nếu muốn đổi loa hay đổi giọng nói:
+Vào Settings -> Devices & Services.
+Tìm thẻ SePay Notifier.
+Nhấn vào nút CONFIGURE (Cấu hình).
+Thay đổi thông số và nhấn Submit. Các thay đổi sẽ có hiệu lực ngay lập tức cho lần giao dịch tới.
+8. Xử lý sự cố (Troubleshooting)
+Không thấy thực thể: Kiểm tra lại file sensor.py đã có trong thư mục chưa và đã Restart HA chưa.
+Loa không báo: Đảm bảo thực thể loa (media_player) đang ở trạng thái idle hoặc playing và âm lượng không bị tắt. Kiểm tra Log trong HA để xem có lỗi dịch vụ tts.speak không.
+Webhook không hoạt động: Kiểm tra URL Webhook xem đã chính xác chưa, và Home Assistant của bạn có đang mở port ra internet (hoặc dùng Nabu Casa/DuckDNS) để SePay có thể gửi dữ liệu về không.
+Tài liệu hướng dẫn được tạo dựa trên phiên bản v1.6.0 của SePay Custom Component.
