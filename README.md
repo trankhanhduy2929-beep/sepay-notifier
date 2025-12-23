@@ -30,7 +30,7 @@ Vào **Settings** \-\> **System** \-\> **YAML** \-\> **Check Configuration**. N�
 3. Tìm kiếm **SePay Notifier**.  
 4. Nhập các thông tin:  
    * **Webhook ID:** Đặt một cái tên duy nhất (ví dụ: chuyen\_tien\_nha\_toi).  
-   * **TTS Entity:** Chọn thực thể TTS bạn đang dùng (mặc định tts.edge\_tts\_2).  
+   * **TTS Entity:** Chọn thực thể TTS bạn đang dùng (mặc định tts.edge\_tts).  
    * **Media Player:** Chọn loa muốn phát thông báo.  
    * **Voice/Rate/Volume:** Tùy chỉnh giọng nói theo ý muốn.
 
@@ -40,7 +40,7 @@ Vào **Settings** \-\> **System** \-\> **YAML** \-\> **Check Configuration**. N�
 2. Vào mục **Cấu hình Webhook** (hoặc Tích hợp hệ thống).  
 3. Tạo Webhook mới với URL có cấu dạng:  
    https://\<DOMAIN\_CỦA\_BẠN\>/api/webhook/\<WEBHOOK\_ID\_BẠN\_ĐÃ\_ĐẶT\>  
-   Ví dụ: https://myhome.duckdns.org/api/webhook/chuyen\_tien\_nha\_toi  
+   Ví dụ: https://myhome.duckdns.org/api/webhook/chuyen_tien_nha_toi  
 4. Chọn phương thức: POST và Content-Type: application/json.
 
 ## **6\. Danh sách các thực thể (Entities)**
