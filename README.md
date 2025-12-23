@@ -68,6 +68,6 @@ Bạn không cần xóa cài lại nếu muốn đổi loa hay đổi giọng n�
 
 * **Không thấy thực thể:** Kiểm tra lại file sensor.py đã có trong thư mục chưa và đã Restart HA chưa.  
 * **Loa không báo:** Đảm bảo thực thể loa (media\_player) đang ở trạng thái idle hoặc playing và âm lượng không bị tắt. Kiểm tra Log trong HA để xem có lỗi dịch vụ tts.speak không.  
-* **Webhook không hoạt động:** Kiểm tra URL Webhook xem đã chính xác chưa, và Home Assistant của bạn có đang mở port ra internet (hoặc dùng Nabu Casa/DuckDNS) để SePay có thể gửi dữ liệu về không.
+* **Webhook không hoạt động:** Kiểm tra URL Webhook xem đã chính xác chưa, và Home Assistant của bạn có đang mở port ra internet (hoặc dùng Nabu Casa/DuckDNS) hoặc Cloudflare để SePay có thể gửi dữ liệu về không.
 
 *Tài liệu hướng dẫn được tạo dựa trên phiên bản v1.6.0 của SePay Custom Component.*
