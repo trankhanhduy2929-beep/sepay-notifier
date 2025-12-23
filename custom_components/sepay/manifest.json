@@ -1,10 +1,10 @@
 {
   "domain": "sepay",
   "name": "SePay Notifier",
-  "documentation": "[https://docs.sepay.vn](https://docs.sepay.vn)",
+  "documentation": "https://docs.sepay.vn",
   "dependencies": ["webhook", "tts"],
-  "codeowners": [],
-  "version": "1.9.1",
+  "codeowners": ["@trankhanhduy2929"],
+  "version": "2.0.5",
   "config_flow": true,
   "iot_class": "cloud_push"
 }
