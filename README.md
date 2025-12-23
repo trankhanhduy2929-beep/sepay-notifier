@@ -15,6 +15,9 @@ Component này giúp bạn nhận dữ liệu biến động số dư từ SePay
 
 ## **3\. Hướng dẫn cài đặt**
 
+### ** Đăng kí tài khoản Sepay tại : 
+https://my.sepay.vn/register?gcid=641
+
 ### **Bước 1: Cài qua Hacs
 
 Điền link vào kho lưu trữ tùy chỉnh https://github.com/trankhanhduy2929-beep/sepay-notifier 
