@@ -1,0 +1,7 @@
+{
+  "name": "SePay Notifier",
+  "content_type": "integration",
+  "domains": ["sepay"],
+  "iot_class": "cloud_push",
+  "render_readme": true
+}
