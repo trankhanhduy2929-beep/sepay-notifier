@@ -4,7 +4,7 @@ Tích hợp thông báo giao dịch ngân hàng từ SePay.vn vào Home Assistan
 
 ## **1\. Giới thiệu**
 
-Component này giúp bạn nhận dữ liệu biến động số dư từ SePay qua cơ chế Webhook. Dữ liệu được tách bạch thành các thực thể (entities) riêng lẻ để bạn dễ dàng quản lý và hiển thị trên Dashboard.
+Component này giúp bạn nhận dữ liệu biến động số dư từ SePay. Dữ liệu được tách bạch thành các thực thể (entities) riêng lẻ để bạn dễ dàng quản lý và hiển thị trên Dashboard.
 
 ## **2\. Tính năng nổi bật**
 
@@ -13,22 +13,11 @@ Component này giúp bạn nhận dữ liệu biến động số dư từ SePay
 * **Giao diện cấu hình UI:** Thiết lập và thay đổi tùy chọn (Configure) trực tiếp trên giao diện HA mà không cần khởi động lại hoặc cài lại.  
 * **Tương thích cao:** Hỗ trợ mọi ngân hàng mà SePay cung cấp.
 
-## **3\. Cấu trúc thư mục**
+## **3\. Hướng dẫn cài đặt**
 
-Tải các tệp mã nguồn và đặt vào đúng đường dẫn sau:  
-config/custom\_components/sepay/  
-Các tệp cần thiết:
+### **Bước 1: Cài qua Hacs
 
-* manifest.json: Thông tin định danh integration.  
-* \_\_init\_\_.py: Xử lý logic Webhook và dịch vụ TTS.  
-* config\_flow.py: Giao diện thiết lập và cấu hình lại (Options).  
-* sensor.py: Khai báo các thực thể hiển thị lên giao diện.
-
-## **4\. Hướng dẫn cài đặt**
-
-### **Bước 1: Chép tệp vào Home Assistant**
-
-Sử dụng File Editor, Samba Share hoặc SSH để tạo thư mục sepay và chép 4 tệp trên vào.
+Điền link vào kho lưu trữ tùy chỉnh https://github.com/trankhanhduy2929-beep/sepay-notifier 
 
 ### **Bước 2: Khởi động lại Home Assistant**
 
