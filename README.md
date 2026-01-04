@@ -45,7 +45,7 @@ Vào **Settings** \-\> **System** \-\> **YAML** \-\> **Check Configuration**. N�
    https://\<DOMAIN\_CỦA\_BẠN\>/api/webhook/\<WEBHOOK\_ID\_BẠN\_ĐÃ\_ĐẶT\>  
    Ví dụ: https://myhome.duckdns.org/api/webhook/chuyen_tien_nha_toi  
 4. Chọn phương thức: POST và Content-Type: application/json.
-
+5. Liên kết bank và tạo QR Tại https://my.sepay.vn/createqr , lưu ảnh mã QR này lại, khi chuyển khoản dùng ảnh này thì sẽ nhận thông báo trên loa và hass.
 ## **6\. Danh sách các thực thể (Entities)**
 
 Sau khi cài đặt thành công, Integration sẽ tạo ra 1 Thiết bị (Device) chứa 7 thực thể:
